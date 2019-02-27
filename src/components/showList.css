@@ -14,7 +14,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 tr:hover {background-color:#a56868;}
 td:hover {background-color:#f2f2f2;}
 
-td.data{
+td#data{
     text-transform: capitalize;
 }
 i{

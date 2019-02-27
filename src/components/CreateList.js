@@ -27,7 +27,8 @@ class CreateList extends React.Component {
         <form onSubmit={this.onSearchSubmit} className="ui form">
           <div className="field">
             <label>Add To Do Item</label>
-            <input
+            <input 
+              id="textData"
               type="text"
               value={this.state.term}
               placeholder={this.state.inputHolder}

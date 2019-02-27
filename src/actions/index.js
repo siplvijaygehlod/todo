@@ -13,3 +13,11 @@ export const removeList = id => {
     payload: id
   };
 };
+
+export const editList = id => {
+  //console.log(id,"action");
+  return {
+    type: "EDIT_TODO",
+    payload: id
+  };
+};
