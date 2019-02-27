@@ -12,15 +12,29 @@ class ShowList extends React.Component {
     );
   };
 
-  /* editTask = () => {
-      //console.log(dataValue,"fun"); <EditTask rowId={dataVal} />
-      this.setState({ editable: true });
+  editTask = () => {
+      //console.log(dataValue,"fun"); //<EditTask rowId={dataVal} />
+      if(!this.state.editable){
+        this.setState({ editable: true });
+      }
   };
 
-  editItem = (dataVal) =>{
-      return ("a")
-  }; */
+  editItem = dataVal =>{
+    console.log(`{data-${dataVal}}`);
+    if(this.state.editable){
 
+     //let formVal=;
+      return ( <div><form onSubmit={this.onSearchSubmit} >
+     
+      <input 
+        id="textData"
+        type="text"
+        value={dataVal}
+      />
+    </form>
+    </div>);
+    }
+  }; 
   listData() {
     //console.log(this.props.mydata, "showList");
     return this.props.mydata.map((data, id) => {
@@ -31,14 +45,14 @@ class ShowList extends React.Component {
               <tr>
                 <td>{id + 1}</td>
                 <td id={`data-${id}`}>
-                {this.state.editable ? ()=> this.editItem(id) : data}
+                {this.state.editable ? (this.editItem(id)) : data}
                 </td>
-                {/* <td onClick={() => this.editTask()}>
+                <td onClick={() => this.editTask()}>
                   <i                    
                     className="fa fa-pencil-square-o"
                     aria-hidden="true"
                   />
-                </td> */}
+                </td> 
                 <td onClick={() => this.removeTask(id)}>
                   <i                    
                     className="fa fa-trash"
