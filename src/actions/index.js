@@ -7,7 +7,7 @@ export const addList = term => {
 };
 
 export const removeList = id => {
-  console.log(id);
+  //console.log(id,"action");
   return {
     type: "DELETE_TODO",
     payload: id

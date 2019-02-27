@@ -4,18 +4,10 @@ import "./showList.css";
 import {removeList} from "../actions";
 
 class ShowList extends React.Component {
-  /* tableHead(){
-    return (<thead>
-      <tr><td>a</td>
-      <td>a</td>
-      <td>a</td>
-      <td>a</td></tr>
-    </thead>);
-  } */
-
+  
   removetask = dataValue => {
     return (
-      //console.log(dataValue)
+      //console.log(dataValue,"fun")
       this.props.removeList(dataValue)
     );
   };
@@ -30,13 +22,11 @@ class ShowList extends React.Component {
               <tr>
                 <td>{id + 1}</td>
                 <td className="data">{data}</td>
-                <td>
-                  <i
-                    onClick={(id) => this.removetask(id)}
-                    className="fa fa-pencil-square-o"
+                <td onClick={() => this.removetask(id)}>
+                  <i                    
+                    className="fa fa-trash"
                     aria-hidden="true"
                   />
-                  
                 </td>
               </tr>
             </tbody>
