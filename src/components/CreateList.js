@@ -25,32 +25,34 @@ class CreateList extends React.Component {
   onUpdateSubmit = event => {
     event.preventDefault();
     /* send this updated value to reducer using action creator */
-      this.props.editList(this.state.term,this.props.triggerChildUpdate.editKey);
-      this.setState({ term: "" });
-      this.props.updateApp();
+      
+    this.props.editList(this.state.term,this.props.triggerChildUpdate.editKey);
+    this.setState({ term: "" });
+    
+    /* updateApp callback function for reseting the values of
+      state after updation task is completed. */
+    
+    this.props.updateApp();
   };
 
-
- 
-
-  listForm() {
-    if(this.props.triggerChildUpdate.editTable){
-    return (
-      <div className=" search-bar ui segment">
+ listForm() {
+   if(this.props.triggerChildUpdate.editTable && this.props.mydata.length !==0){
+     return (
+       <div className=" search-bar ui segment">
         <form onSubmit={this.onUpdateSubmit} className="ui form">
           <div className="field">
-            <label>Update To Do Item</label>
-            <input 
-              id="textData"
-              type="text"
-              value={this.state.term}
-              placeholder={this.state.updateHolder}
-              onChange={this.onInputChange}
-            />
+          <label>Update To Do Item</label>
+          <input
+            id="textData"
+            type="text"
+            value={this.state.term}
+            placeholder={this.state.updateHolder}
+            onChange={this.onInputChange}
+          />
           </div>
         </form>
-      </div>
-    );
+       </div>
+     );
     }else{
       return (
         <div className=" search-bar ui segment">
@@ -58,27 +60,23 @@ class CreateList extends React.Component {
             <div className="field">
               <label>Add To Do Item</label>
               <input 
-                id="textData"
-                type="text"
-                value={this.state.term}
-                placeholder={this.state.inputHolder}
-                onChange={this.onInputChange}
+              type="text"
+              value={this.state.term}
+              placeholder={this.state.inputHolder}
+              onChange={this.onInputChange}
               />
             </div>
           </form>
         </div>
       );
     }
-
-  }
+}
   render() {
-    //console.log(this.props.triggerChildUpdate,"clist")
     return <div className="ui relaxed divided list">{this.listForm()}</div>;
   }
 }
 
 const mapStateToProps = state => {
-  //console.log(state)
   return {
     mydata: state.mydata
   };

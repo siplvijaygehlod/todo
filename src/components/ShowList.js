@@ -1,24 +1,25 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./showList.css";
+import "./List.css";
 import {removeList} from "../actions";
 
 class ShowList extends React.Component {
   
   state = { editable: false};
+  /* To call the action creator for delete action */
   removeTask = dataValue => {
     return (
-      //console.log(dataValue,"fun")
       this.props.removeList(dataValue)
     );
   };
 
   editTask = dataVal => {
+    /* triggerParentUpdate is also callback function for getting 
+      value of key. */
     this.props.triggerParentUpdate(dataVal);
   }; 
 
   listData() {
-    //console.log(this.props.mydata, "showList");
     return this.props.mydata.map((data, id) => {
       return (
         <div key={id}>
