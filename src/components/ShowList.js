@@ -4,6 +4,7 @@ import "./showList.css";
 import {removeList} from "../actions";
 
 class ShowList extends React.Component {
+  
   state = { editable: false};
   removeTask = dataValue => {
     return (
@@ -12,29 +13,10 @@ class ShowList extends React.Component {
     );
   };
 
-  editTask = () => {
-      //console.log(dataValue,"fun"); //<EditTask rowId={dataVal} />
-      if(!this.state.editable){
-        this.setState({ editable: true });
-      }
-  };
-
-  editItem = dataVal =>{
-    console.log(`{data-${dataVal}}`);
-    if(this.state.editable){
-
-     //let formVal=;
-      return ( <div><form onSubmit={this.onSearchSubmit} >
-     
-      <input 
-        id="textData"
-        type="text"
-        value={dataVal}
-      />
-    </form>
-    </div>);
-    }
+  editTask = dataVal => {
+    this.props.triggerParentUpdate(dataVal);
   }; 
+
   listData() {
     //console.log(this.props.mydata, "showList");
     return this.props.mydata.map((data, id) => {
@@ -45,9 +27,9 @@ class ShowList extends React.Component {
               <tr>
                 <td>{id + 1}</td>
                 <td id={`data-${id}`}>
-                {this.state.editable ? (this.editItem(id)) : data}
+                {data}
                 </td>
-                <td onClick={() => this.editTask()}>
+                <td onClick={() => this.editTask(id)}>
                   <i                    
                     className="fa fa-pencil-square-o"
                     aria-hidden="true"

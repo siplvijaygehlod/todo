@@ -14,10 +14,13 @@ export const removeList = id => {
   };
 };
 
-export const editList = id => {
-  //console.log(id,"action");
+export const editList = (term,id) => {
+  console.log(id,term);
   return {
     type: "EDIT_TODO",
-    payload: id
+    payload: {
+      term:term,
+      id:id
+    }
   };
 };
